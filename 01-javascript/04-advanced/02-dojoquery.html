@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		#thing {
+			height: 100px;
+			width: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="thing"></div>
+	<script type="text/javascript">
+
+		(function(global) {
+			function dojoMojoBinder(element) {
+				mojo = {
+					click: function(handler){
+						element.addEventListener('click', handler);
+						return mojo;
+					},
+					hover: function(onHoverHandler, offHoverHandler){
+						element.addEventListener('mouseover', onHoverHandler);
+						element.addEventListener('mouseout', offHoverHandler);
+						return mojo;
+					}
+				}
+
+				return mojo;
+			}
+
+			function $Dojo(id) {
+				const element = document.getElementById(id);
+				return dojoMojoBinder(element);
+			}
+
+			global.$Dojo = $Dojo;
+			
+		})(window);
+
+
+		$Dojo("thing").click(function() {
+			console.log("I was clicked!")
+		}).click(function() {
+			console.log("i was clicked twice")
+		}).hover(function() {
+			console.log("I was hovered")
+		}, function() {
+			console.log("i was hovered off")
+		})
+
+
+	</script>
+</body>
+</html>
+

@@ -1,1 +1,31 @@
 // 1 hour
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hunting Github</title>
+	<script
+  	src="http://code.jquery.com/jquery-3.3.1.min.js"
+  	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  	crossorigin="anonymous"></script>
+</head>
+<body>
+	<script>
+		$(document).ready(function(){
+			$("#button").click(getName)
+		});
+	
+		function getName() {
+				$.get('https://api.github.com/users/madelynkoch', function(data){
+				var name = data['login']
+				$("p").text(name)
+			} )
+		}
+		
+	</script>
+	<button id="button">
+		Display My Name!
+	</button>
+	<p>
+	</p>
+</body>
+</html>
