@@ -1,0 +1,16 @@
+input {
+	display: block;
+	margin: 10px 30px;
+}
+
+body {
+	font-family: Helvetica Neue;
+}
+
+label {
+	margin: 0px 30px;
+}
+
+h1 {
+	text-align: center;
+}
