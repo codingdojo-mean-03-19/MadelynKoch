@@ -1,0 +1,11 @@
+h1 {
+	font-family: Helvetica Neue;
+	text-align: center;
+}
+
+img {
+	width: 65%;
+	height: auto;
+	margin: 30px 17%;
+	border: 5px solid Black;
+}

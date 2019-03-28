@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Cat 1</title>
+	<link rel="stylesheet" href="details.css">
+</head>
+<body>
+	<h1>Details Page for <%= cat.name %></h1>
+	<img src=<%= cat.pic %> alt="cat" />
+	<div>
+		<h4>Favorite Movie: <%= cat.favorite_movie %></h4>
+	</div>
+	<div>
+		<h4>Age: <%= cat.age %></h4>
+	</div>
+	<div>
+		<h4>Hobbies: </h4>
+		<% for (var x in cat.hobbies) { %>
+			<p><%= cat.hobbies[x] %></p>
+		<% } %>
+	</div
+</body>
+</html>
