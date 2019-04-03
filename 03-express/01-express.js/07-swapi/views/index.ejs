@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Swapi</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+
+		var currentPage; 
+		var numPages; 
+		var dataType;
+
+		function changePage(dataType, page){
+			getData(dataType, page, function(results, count){
+				numPages = Math.ceil(count/10);
+				displayData(results);
+			})
+		}
+
+		function showAllData(dataType){
+			getAllData(dataType, function(list){
+				displayData(list);
+			})
+		}
+
+		function getAllData(dataType, callback, currentPage = 1, fullList = []) {
+			getData(dataType, currentPage, function(results, count) {
+				fullList.push(...results);
+				if (currentPage < Math.ceil(count/10)) {
+					getAllData(dataType, callback, currentPage + 1, fullList)
+				} else {
+					callback(fullList);
+				}
+			})
+
+		}
+
+		function displayData(list){
+			var info = "<ul>"
+			for(var i = 0; i < list.length; i++){
+				info += "<li>" + list[i]['name'] + "</li>"
+			}
+			info += "</ul>"
+			$('#content').html(info)
+		}
+
+		function getData(dataType, page, callback){
+			$.get('/displayData', { dataType, page }, function(data){
+				callback(data.results, data.count)
+			}, 'json');
+		}
+		
+		$(document).ready(function(){
+
+			$('.dataType').click(function(){
+				dataType = this.dataset.dataType;
+				currentPage = 1; 
+				changePage(dataType, currentPage);
+			});
+
+			$('#next').click(function(){
+				if(currentPage < numPages){
+					currentPage++;
+					changePage(dataType, currentPage);
+				}			
+			})
+
+			$('#previous').click(function(){
+				if(currentPage > 1) {
+					currentPage--;
+					changePage(dataType, currentPage);
+				}
+			})
+
+			$('#getAll').click(function(){
+				showAllData(dataType);
+			})
+
+		});
+	</script>
+	<h1>Star Wars Wiki</h1>
+	<button class="dataType" data-data-type="people">People</button>
+	<button class="dataType" data-data-type="planets">Planets</button>
+	<div id='content'></div>
+	<button id="previous">Previous</button>
+	<button id="getAll">Get all</button>
+	<button id="next">Next</button>
+	
+	
+</body>
+</html>
