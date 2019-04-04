@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Form</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+		<script type ="text/javascript">
+			$(document).ready(function (){
+				var socket = io();
+
+				$('#survey').submit(function(event){
+					event.preventDefault()
+					console.log("submit")
+					socket.emit('posting_form', { msg: {name: $('#name').val(), location: $('#location').val(), language: $('#language').val(), comment: $('#comment').val()} });
+					socket.on('updated_message', function(data){
+						$('#displayInfo').html(data.msg); 
+					})
+				})
+
+			})
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div id="displayInfo"></div>
+			<form action="" id="survey">
+				Your Name: <input type="text" name="name" id="name"/>
+				Dojo Location: <select name="location" id="location">
+					<option value="Seattle">Seattle</option>
+					<option value="Berkeley">Berkeley</option>
+					<option value="Boise">Boise</option>
+					<option value="Dallas">Dallas</option>
+				</select>
+				Favorite Language: <select name="language" id="language">
+					<option value="Python">Python</option>
+					<option value="JavaScript">JavaScript</option>
+					<option value="C#">C#</option>
+					<option value="Swift">Swift</option>
+				</select>
+				Comment (optional): <textarea name="comment" id="comment"></textarea>
+				<input type="submit" value="Submit" />
+			</form>
+		</div>
+	</body>
+</html>
