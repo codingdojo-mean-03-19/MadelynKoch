@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Epic Button</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function(){
+                var socket = io();
+
+                $('#epicbtn').click(function(){
+                    socket.emit("push_epic", { msg: "click!" })
+                })
+
+                $('#resetbtn').click(function(){
+                    socket.emit("push_reset")
+                })
+                socket.on("update_count", function(data){
+                    $('#count').html(data.msg)
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <h1>The Button has been pushed <span id="count">0</span> time(s)</h1>
+        <h3>Push the button to update the count!</h3>
+        <button id="epicbtn">Push the epic button</button>
+        <button id="resetbtn">Reset count</button>
+    </body>
+</html>
