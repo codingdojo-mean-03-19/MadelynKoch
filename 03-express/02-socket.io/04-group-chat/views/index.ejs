@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Group Chat</title>
+        <link rel="stylesheet" href="main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+        <script type ="text/javascript">
+
+			$(document).ready(function (){
+                
+                var socket = io();
+                var convo;
+
+                $('#cancel').click(function(){
+                    $('#name').val("");
+                })
+
+                $('#ok').click(function(){
+                    socket.emit("got_new_user", {msg: $('#name').val()});
+                    $('#enterName').hide();
+                    $('#convoBoard').show();
+                })
+
+                $('#submit').click(function(){
+                    socket.emit("post_message", {msg: $('#message').val()});
+                    $('#message').val("");
+                })
+
+                socket.on("update_convo_board", function(data){
+                    convo += "<tr><td>" + data.msg.name + ": </td><td>" + data.msg.message + "</td></tr>"
+                    $('#chat').html(convo);
+                })
+
+            })
+        </script>
+
+    </head>
+    <body>
+        <div id="enterName">
+            <p>Please enter your name:</p>
+            <input type="text" name="name" id="name">
+            <input type="submit" value="Cancel" id="cancel">
+            <input type="submit" value="OK" id="ok">
+        </div>
+        <div id="convoBoard">
+            <h1>Conversation Board</h1>
+            <table id="chat"></table>
+            <input type="text" name="message" placeholder="Enter your message here" id="message">
+            <input type="submit" value="send" id="submit">
+        </div>
+    </body>
+</html>
