@@ -23,3 +23,4 @@ io.on("connection", function(socket){
         io.emit("update_convo_board", {msg: {name: name, message: data.msg}})
     })
 })
+

@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Basic Mongoose</title>
+    </head>
+    <body>
+        <table>
+            <% for(var i in users){ %>
+                <tr>
+                    <td><%= users[i]['name'] %></td>
+                </tr>
+            <% } %>
+        </table>
+        <form action="/users" method="post">
+            Name: <input type="text" name="name">
+            Age: <input type="text" name="age">
+            <input type="submit" name="submit">
+        </form>
+    </body>
+</html>
