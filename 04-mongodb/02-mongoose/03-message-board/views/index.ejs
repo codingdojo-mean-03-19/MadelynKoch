@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Message Board</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <h1>The Dojo Message Board</h1> 
+        <div id="mainDiv">
+            <% if(messages.posts) { %>
+                <% for (var x of messages.posts) { %>
+                <h3><%= x %></h3>
+                <% } %>
+            <% } %>
+            <form action="/new" method="POST">
+                Name: <input type="text" name="name"/>
+                Message: <input type="text" name="message" />
+                <input type="submit" value="Post Message" />
+            </form>
+            <% for(post of posts) { %>
+                <h3>Name: <%= post.name %></h3>
+                <h3>Message: <%= post.message %></h3>
+                <div id="commentDiv">
+                    <% for(comment of post.comments) { %>
+                        <h5>Name: <%= comment.name %></h5>
+                        <h5>Message: <%= comment.message %></h5>
+                    <% } %>
+                    <% if(messages.comments) { %>
+                        <% for (var x of messages.comments) { %>
+                        <h3><%= x %></h3>
+                        <% } %>
+                    <% } %>
+                    <form action="/new/<%= post._id %>" method="POST">
+                        Name: <input type="text" name="name"/>
+                        Comment: <input type="text" name="message" />
+                        <input type="submit" value="Post Comment" />
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </body>
+</html>

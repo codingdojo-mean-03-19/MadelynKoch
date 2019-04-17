@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>New Pika</title>
+    </head>
+    <body>
+        <h1>Create/Update a Pika</h1>
+        <form action="<%= typeof pika !== 'undefined' ? '/pikas/' + pika._id : '/pikas' %>" method="POST">
+            Name: <input type="text" name="name" value="<%= name %>"/>
+            Age: <select name="age" value="<%= age %>">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            Favorite Food: <input type="text" name="favorite_food" value="<%= favorite_food %>" />
+            <input type="submit" value="Add to pack!" />
+        </form>
+    </body>
+</html>
