@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Registration Login</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <div>
+            <h3>Registration</h3>
+            <% if(messages.users) { %>
+                <% for (var x of messages.users) { %>
+                <h3><%= x %></h3>
+                <% } %>
+            <% } %>
+            <form action="/new" method="POST">
+                <table>
+                    <tr>
+                        <td>First Name:</td>
+                        <td><input type="text" name="firstName" /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td><input type="text" name="lastName" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="text" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday:</td>
+                        <td><input type="date" name="birthday" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="text" name="password" /></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password:</td>
+                        <td><input type="text" name="passwordConfirm" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Register" /></td>
+                    </tr>     
+                </table>
+            </form>
+        </div>
+        <div>
+            <h3>Login</h3>
+            <% if(messages.login) { %>
+                <% for (var x of messages.login) { %>
+                <h3><%= x %></h3>
+                <% } %>
+            <% } %>
+            <form action="/login" method="POST">
+                <table>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="text" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="text" name="password" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Login" /></td>
+                    </tr>
+                </table>
+            </form> 
+        </div>
+    </body>
+</html>
