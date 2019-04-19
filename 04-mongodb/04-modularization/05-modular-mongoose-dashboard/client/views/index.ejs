@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Pika Display</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>Pika Pack</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Favorite Food</th>
+                <th>Actions</th>
+            </tr>
+            <% for (pika of pikas) { %>
+            <% console.log(pika) %>
+            <tr>
+                <td><%= pika.name %></td>
+                <td><%= pika.age %></td>
+                <td><%= pika.favorite_food %></td>
+                <td>
+                    <form action="pikas/destroy/<%= pika._id %>" method="POST">
+                        <input type="submit" value="Remove from pack">
+                    </form>
+                    <a href="pikas/edit/<%= pika._id %>">Edit</a>
+                    <a href="pikas/<%= pika._id %>">View</a>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
