@@ -1,0 +1,20 @@
+#container {
+    border: 1px solid blue;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px;
+    font-family: Helvetica Neue;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.quoteAuthor {
+    margin: 10px 30px 20px;
+    color: Blue;
+}

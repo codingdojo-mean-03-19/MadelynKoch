@@ -1,0 +1,33 @@
+const mongoose = require('mongoose'),
+      Quote = mongoose.model('Quote')
+const helper = require('../helper.js')
+module.exports = function(app){
+
+    app.get('/', function(req, res){
+        res.render('index')
+    })
+
+    app.post('/quotes', function(req, res) {
+        console.log("POST DATA", req.body);
+        var quote = new Quote({name: req.body.name, quote: req.body.quote});
+        quote.save(function(err) {
+            if(err) {
+                console.log('something went wrong');
+            } else {
+                console.log('successfully added quote')
+                res.redirect('/quotes');
+            }
+        })
+    })
+
+    app.get('/quotes', function(req, res){
+        Quote.find({}, function(err, quotes){
+            if(err) {
+                console.log(err);
+            } else {
+                console.log(quotes);
+                res.render('quotes', {quotes, helper});
+            }
+        }) 
+    })
+}

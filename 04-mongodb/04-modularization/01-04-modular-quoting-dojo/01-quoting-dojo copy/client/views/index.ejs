@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Quoting Dojo</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <div id="container">
+            <h1>Welcome to Quoting Dojo!</h1>
+            <form action="/quotes" method="post">
+                <div  class="inputDiv">
+                    Your name: <input id="nameBox" type="text" name="name">
+                </div>
+                <div  class="inputDiv">
+                    Your quote: <input id="quoteBox" type="text" name="quote">
+                </div>
+                <div id="buttons">
+                    <input class="button" type="submit" value="Add my quote!">
+                    <a class="button" href="/quotes">Skip to quotes!</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
