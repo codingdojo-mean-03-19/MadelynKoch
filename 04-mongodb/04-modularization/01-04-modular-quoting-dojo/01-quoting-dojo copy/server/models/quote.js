@@ -1,5 +1,5 @@
 
-var mongoose = require('mongoose');
+var mongoose = require('../config/mongoose');
 const { Schema } = mongoose;
 
 var QuoteSchema = new mongoose.Schema({

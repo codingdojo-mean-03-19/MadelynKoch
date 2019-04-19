@@ -2,8 +2,6 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/quoting_dojo');
 app.use(express.static(path.join(__dirname, './static')));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, '../client/views'));
