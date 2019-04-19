@@ -1,6 +1,6 @@
-const mongoose = require('mongoose'),
-      Quote = mongoose.model('Quote')
-const helper = require('../helper.js')
+const Quote = require('../models/quote.js');
+const helper = require('../helper.js');
+
 module.exports = {
     index: function(req, res){
         res.render('index');
