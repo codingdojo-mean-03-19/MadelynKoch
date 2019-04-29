@@ -7,18 +7,18 @@ module.exports = {
                 console.log(err);
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Success", data: tasks});
+                res.json({message: "Success", tasks });
             }
         })
     },
 
     show: function(req, res){
-        Task.find({_id: req.params.id}, function(err, task){
+        Task.findOne({_id: req.params.id}, function(err, task){
             if(err) {
                 console.log(err);
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Success", data: task});
+                res.json({message: "Success", task });
             }
         })
     },
