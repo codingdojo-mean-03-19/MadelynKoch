@@ -5,7 +5,6 @@ module.exports = function(app) {
         golds.index(req, res);
     })
     app.post('/gold', function(req, res) {
-        console.log("*********", req.body);
         golds.new(req, res);
     })
 }
