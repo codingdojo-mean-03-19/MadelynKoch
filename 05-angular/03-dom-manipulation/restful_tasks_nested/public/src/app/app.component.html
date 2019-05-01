@@ -1,0 +1,33 @@
+<h1>Restful Tasks API</h1>
+
+<button (click)="onButtonClick()">Get All Tasks</button>
+<div *ngIf="tasks.length > 0">
+  <p *ngFor="let task of tasks">
+    {{task.title}} 
+    <button (click)="onButtonClickParam(task)">show</button>
+    <button (click)="onButtonClickDelete(task._id)">delete</button>
+    <button (click)="onButtonClickUpdate(task)">update</button>
+  </p>
+</div>
+
+<app-task class="root" *ngIf="task" [onButtonClickParam]="task"></app-task>
+
+
+<div>
+  <h2>New Task</h2>
+  <form (submit)="onSubmit()">
+    <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+    <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+    <input type="submit" value="Create Task" />
+  </form>
+</div>
+
+<div *ngIf="showUpdate === true">
+    <h2>Update Task</h2>
+    <form (submit)="onSubmitUpdateTask(updateTask._id)">
+        <input type="text" name="updateTask.title" [(ngModel)]="updateTask.title" />
+        <input type="text" name="updateTask.description" [(ngModel)]="updateTask.description" />
+        <input type="submit" value="Update Task" />
+      </form>
+</div>
+
