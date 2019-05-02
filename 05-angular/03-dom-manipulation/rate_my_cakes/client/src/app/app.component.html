@@ -1,0 +1,38 @@
+<div class="root">
+
+  <h1>Rate My Cakes</h1>
+
+  <div id="newCake">
+    <h3>Submit a cake to be rated</h3>
+    <form (submit)="onSubmitNewCake()">
+      <label>Baker name:</label>
+      <input type="text" name="newCake.baker" [(ngModel)]="newCake.baker" />
+      <label>Image url:</label>
+      <input type="text" name="newCake.imageUrl" [(ngModel)]="newCake.imageUrl" />
+      <input type="submit" />
+    </form>
+  </div>
+
+  <div id="cakeDisplay">
+    <div *ngFor="let cake of cakes">
+        <button (click)="cakeToShow(cake)"><img src="{{ cake.imageUrl }}" alt="Picture of cake" /></button>
+        <form (submit)="onSubmitUpdateCake(cake._id)">
+          <select name="rating" value=5 [(ngModel)]="review.rating">
+            <option value=5>5 stars</option>
+            <option value=4>4 stars</option>
+            <option value=3>3 stars</option>
+            <option value=2>2 stars</option>
+            <option value=1>1 stars</option>
+          </select>
+          <input type="text" name="comment" placeholder="Type your comment here" [(ngModel)]="review.comment" />
+          <input type="submit" value="Rate!" />
+        </form>
+      </div>
+  </div>
+
+  <app-cake *ngIf="showCakeDetail" [cakeToShow]="cake"></app-cake>
+
+</div>
+
+
+

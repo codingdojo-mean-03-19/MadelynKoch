@@ -1,0 +1,8 @@
+<div>
+  <h2>Baked by {{ cakeToShow.baker }}</h2>
+  <img src="{{ cakeToShow.imageUrl }}" alt="Picture of Cake">
+  <div *ngFor="let rating of cakeToShow.ratings; let i = index">
+      <p>{{ rating }}</p>
+      <p>{{ cakeToShow.comments[i]}}</p>
+  </div>
+</div>

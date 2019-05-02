@@ -1,0 +1,19 @@
+img {
+    width: 150px;
+    height: auto;
+}
+
+#cakeDisplay {
+    overflow: scroll;
+    display: inline-block;
+    width: 30%;
+    height: 500px;
+}
+
+#cakeDisplay form {
+    display: inline-block;
+}
+
+#newCake {
+    display: inline-block;
+}
