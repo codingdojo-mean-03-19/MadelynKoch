@@ -11,6 +11,7 @@ import { WashingtonDcComponent } from './washington-dc/washington-dc.component';
 import { ChicagoComponent } from './chicago/chicago.component';
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,13 @@ import { HttpClientModule } from '@angular/common/http';
     BurbankComponent,
     DallasComponent,
     WashingtonDcComponent,
-    ChicagoComponent
+    ChicagoComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

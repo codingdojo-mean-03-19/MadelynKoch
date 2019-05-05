@@ -1,3 +1,9 @@
-<p>
-  san-jose works!
-</p>
+<h1>San Jose, CA</h1>
+<ul>
+  <li>Humidity: {{ main.humidity }}</li>
+  <li>Temperature (average): {{ (main.temp - 273.15)*(9/5)+32 }}</li>
+  <li>Temperature (min): {{ (main.temp_min - 273.15)*(9/5)+32 }}</li>
+  <li>Temperature (max): {{ (main.temp_max - 273.15)*(9/5)+32 }}</li>
+  <li>Status: {{ weather[0].main }}</li>
+</ul>
+<img src="https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="san jose" />

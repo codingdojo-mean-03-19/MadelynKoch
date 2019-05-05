@@ -9,16 +9,11 @@ import { HttpService } from './http.service';
 export class AppComponent {
   title = 'client';
 
+  city = "";
+  weather = [{description: 'pending'}];
   constructor(private _httpService: HttpService){}
-  
-  ngOnInit(){
-    this.getWeatherData()
-  }
 
-  getWeatherData(){
-    let observable = this._httpService.getWeather();
-    observable.subscribe(data => {
-      console.log("Got the data!", data);
-    })
+  ngOnInit(){
+    
   }
 }

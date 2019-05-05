@@ -8,7 +8,7 @@ export class HttpService {
 
   constructor(private _http: HttpClient) { }
 
-getWeather() {
-    return this._http.get('http://api.openweathermap.org/data/2.5/weather?q=Seattle&APPID=4bc6c0475d9fe8817e88d9e1e539cde0');
+getWeather(city) {
+    return this._http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=4bc6c0475d9fe8817e88d9e1e539cde0');
   }
 }
