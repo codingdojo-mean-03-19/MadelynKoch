@@ -1,0 +1,9 @@
+<h3 *ngIf="id === 'new'">Add a new author:</h3>
+<h3 *ngIf="id !== 'new'">Edit this author:</h3>
+<button [routerLink]="['/home']">Home</button>
+<form (submit)="onSubmit(id)">
+  <label>Name:</label>
+  <input type="text" name="name" [(ngModel)]="name"/>
+  <input type="submit" value="submit"/>
+  <button [routerLink]="['/home']">Cancel</button>
+</form>
