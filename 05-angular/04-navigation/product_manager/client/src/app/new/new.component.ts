@@ -27,13 +27,14 @@ export class NewComponent implements OnInit {
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
       this.id = params['id'];
-    });
-    if(this.id === 'new'){
-      this.title = "";
-      this.image = "";
-    } else {
-      this.getProductFromService(this.id);
-    }
+      if(this.id === 'new'){
+        this.title = "";
+        this.image = "";
+        this.price = 0;
+      } else {
+        this.getProductFromService(this.id);
+      }
+    }); 
   }
 
   getProductFromService(id) {
