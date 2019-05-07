@@ -1,0 +1,28 @@
+<div id="container">
+  <h2 *ngIf="id === 'new'">Add a new product</h2>
+  <h2 *ngIf="id !== 'new'">Edit this product</h2>
+  <ng-container *ngIf="errors">
+      <p>{{ errors.message }}</p>
+  </ng-container>
+  <form (submit)="onSubmit(id)">
+    <label>Title: </label>
+    <input type="text" 
+    required
+    name="title" 
+    minlength="4"
+    [(ngModel)]="title" 
+    #tite="ngModel"/>
+    <label>Price: </label>
+    <input type="text" name="price" [(ngModel)]="price" />
+    <label>Image URL: </label>
+    <input type="text" name="image" [(ngModel)]="image" />
+    <div *ngIf="id === 'new'">
+      <input type="submit" value="Create" />
+      <button [routerLink]="['products']">Cancel</button>
+    </div>
+    <div *ngIf="id !== 'new'">
+      <input type="submit" value="Update" />
+      <button [routerLink]="['products']">Cancel</button>
+    </div>
+  </form>
+</div>

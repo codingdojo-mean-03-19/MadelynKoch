@@ -1,0 +1,39 @@
+img {
+    width: 150px;
+    height: auto;
+    margin-left: 120px;
+    display: block;
+}
+
+.productDiv {
+    border: 1px solid Black;
+    border-radius: 5px;
+    width: 400px;
+    height: 500px;
+    vertical-align: top;
+    display: inline-block;
+    margin: 20px 10%;
+}
+
+.title {
+    margin-top: 70px;
+}
+
+h3 {
+    text-align: center; 
+}
+
+h2 {
+    text-align: center;
+}
+
+#container {
+    border: 1px solid Black;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+button {
+    margin: 20px -10% 0px 30%;
+
+}
