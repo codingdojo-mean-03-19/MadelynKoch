@@ -1,0 +1,11 @@
+<button [routerLink]="['']">Home</button>
+<h3>Add a new quotable author:</h3>
+<p *ngIf="error !== ''">{{ error }}</p>
+<form (submit)="onSubmitAuthor()">
+  <div class="form-group">
+    <label for="inputAuthor">Name:</label>
+    <input type="text" name="name" [(ngModel)]="name" id="inputAuthor" />
+  </div>
+  <button class="btn btn-primary" [routerLink]="['']">Cancel</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
