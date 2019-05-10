@@ -1,0 +1,13 @@
+<div id="container">
+  <h1>Anonymous Notes</h1>
+  <form (submit)="onSubmitNote()">
+    <div class="form-group">
+      <label for="inputNote">Note: </label>
+      <input type="text" name="note" [(ngModel)]="message" id="inputNote">
+      <input type="submit" value="Add note" />
+    </div>
+  </form>
+  <app-note [notesFormatted]="notesFormatted"></app-note>
+</div>
+
+
