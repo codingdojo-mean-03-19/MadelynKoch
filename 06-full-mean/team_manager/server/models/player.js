@@ -11,13 +11,13 @@ var PlayerSchema = new mongoose.Schema({
 
     preferred_position: {
         type: String,
-        enum: ['midfielder', 'goal keeper', 'defender', 'forward']
+        enum: ['Midfielder', 'Goal Keeper', 'Defender', 'Forward', 'None'],
+        default: 'None'
     },
 
     status: {
-        type: String,
-        enum: ['playing', 'not_playing', 'undecided'],
-        default: 'undecided'
+        type: {},
+        default: {'1': 'undecided', '2': 'undecided', '3': 'undecided'}
     }
 })
 

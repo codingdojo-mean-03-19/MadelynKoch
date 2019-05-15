@@ -1,3 +1,25 @@
-<p>
-  status works!
-</p>
+<div>
+  <h3>Player Status - Game {{ gameNum }}</h3>
+  <button (click)="changeGame(1)">Game 1</button>
+  <button (click)="changeGame(2)">Game 2</button>
+  <button (click)="changeGame(3)">Game 3</button>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Player Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let player of players">
+        <tr scope="row">
+          <td>{{ player.name }}</td>
+          <td>
+            <button [ngClass]="{green: player.status[gameNum]==='playing'}" (click)="onChangeStatus(player, 'playing')">Playing</button>
+            <button [ngClass]="{red: player.status[gameNum]==='not_playing'}" (click)="onChangeStatus(player, 'not_playing')">Not Playing</button>
+            <button [ngClass]="{yellow: player.status[gameNum]==='undecided'}" (click)="onChangeStatus(player, 'undecided')">Undecided</button>
+          </td>
+        </tr>
+      </tbody>    
+    </table>
+</div>
+

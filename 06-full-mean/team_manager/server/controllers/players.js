@@ -14,8 +14,8 @@ module.exports = {
 
     new: function(req, res) {
         objToCreate = { name: req.body.name };
-        if(req.body.pref) {
-            objToCreate.preferred_position = req.body.pref;
+        if(req.body.preferred_position) {
+            objToCreate.preferred_position = req.body.preferred_position;
         }
 
         Player.create(objToCreate, function(err, player){

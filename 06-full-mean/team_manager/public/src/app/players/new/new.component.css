@@ -1,0 +1,25 @@
+input {
+    display: block;
+}
+
+label {
+    display: block;
+}
+
+small {
+    display: block;
+}
+.container {
+    border: 1px solid black;
+    padding: 30px;
+    margin: 40px 5%;
+    width: 90%;
+}
+
+h3 {
+    margin: 20px 0px 40px;
+}
+
+.error {
+    color: red;
+}
