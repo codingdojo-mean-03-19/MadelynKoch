@@ -1,0 +1,14 @@
+<div *ngIf="showResults === false">
+  <app-player [playerNum]="0" [player]="players[0]" (sendNameToBattle)="newPlayer($event)"></app-player>
+  <app-player [playerNum]="1" [player]="players[1]" (sendNameToBattle)="newPlayer($event)"></app-player>
+  
+  <ng-container *ngIf="(players[0] !== false) && (players[1] !== false)">
+    <button (click)="beginBattle()" >BATTLE!</button>
+  </ng-container>
+</div>
+
+<div *ngIf="showResults === true">
+  <app-results [players]="players"></app-results>
+</div>
+
+

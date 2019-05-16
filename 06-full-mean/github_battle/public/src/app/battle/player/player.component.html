@@ -1,0 +1,15 @@
+<div class="playerForm" *ngIf="player === false">
+  <h3>Player {{ playerNum + 1 }}</h3>
+  <form (submit)="onGetUser(playerNum)">
+    <div class='form-group'>
+      <label for="inputName">Github Username </label>
+      <input id="inputName" type="text" [(ngModel)]="name" name="name" />
+    </div>
+    <input id="submitBtn" type="submit" value="Get User" />   
+  </form>
+</div>
+
+<div *ngIf="player">
+  <img src={{player.pic}} alt="avatar" />
+  <h3>{{player.name}}</h3>
+</div>
