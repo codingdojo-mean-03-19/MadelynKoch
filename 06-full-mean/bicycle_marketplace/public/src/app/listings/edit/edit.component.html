@@ -1,0 +1,27 @@
+<div>
+  <form (submit)="onEditListing(listing._id)">
+    <div>
+      <label>Upload Image</label>
+      <input type="text" name="img_url" require [(ngModel)]="listing.img_url">
+      <img src={{listing.img_url}} alt="image" />
+    </div>
+    <div class="form-group">
+      <label for="inputTitle">Title</label>
+      <input type="text" class="inputTitle" name="title" require #title="ngModel" [(ngModel)]="listing.title" />
+    </div>
+    <div class="form-group">
+      <label for="inputPrice">Price</label>
+      <input type="text" class="inputPrice" name="price" require #price="ngModel" [(ngModel)]="listing.price" />
+    </div>
+    <div class="form-group">
+      <label for="inputdescription">Description</label>
+      <input type="text" class="inputDescription" name="description" require #description="ngModel" [(ngModel)]="listing.desc" />
+    </div>
+    <div class="form-group">
+      <label for="inputlocation">Location</label>
+      <input type="text" class="inputLocation" name="location" require #location="ngModel" [(ngModel)]="listing.location" />
+    </div>
+    <input type="submit" value="Update" />
+  </form>
+  <button (click)="onDelete(listing._id)">Delete</button>
+</div>

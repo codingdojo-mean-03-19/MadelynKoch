@@ -1,0 +1,60 @@
+<div class="form-container">
+    <form (submit)="onLoginUser()">
+      <div class="form-group row">
+        <label class="col-md-4">Email</label>
+        <div class="col-md-4">
+            <input type="text" name="email" [(ngModel)]="loginObj.email" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-4">Password</label>
+        <div class="col-md-4">
+            <input type="text" name="password" [(ngModel)]="loginObj.password" />
+        </div>   
+      </div>
+      <p class="red" *ngIf="userNotFound">Invalid login</p>
+      <input class="submitBtn" type="submit" value="Login" />
+    </form>
+</div>
+
+<div class="form-container">
+  <form #registerForm="ngForm" (submit)="onRegisterUser()">
+    <div class="form-group row">
+      <label class="col-md-4">First Name</label>
+      <div class="col-md-4">
+          <input type="text" name="registerObj.firstName" minlength="2" required [(ngModel)]="registerObj.firstName" #firstName="ngModel" />
+      </div>        
+    </div>
+    <p *ngIf="firstName.invalid && firstName.touched" class="red">First name must be at least 2 characters</p>
+    <div class="form-group row">
+      <label class="col-md-4">Last Name</label>
+      <div class="col-md-4">
+          <input type="text" name="registerObj.lastName" minlength="2" required [(ngModel)]="registerObj.lastName" #lastName="ngModel" />
+      </div>
+    </div>
+    <p *ngIf="lastName.invalid && lastName.touched" class="red">Last name must be at least 2 characters</p>
+    <div class="form-group row">
+      <label class="col-md-4">Email</label>
+      <div class="col-md-4">
+        <input type="text" name="registerObj.email" required [pattern]="pattern" [(ngModel)]="registerObj.email" #email="ngModel" />
+      </div>
+    </div>
+    <p *ngIf="email.invalid && email.touched" class="red">Invalid email</p>
+    <div class="form-group row">
+      <label class="col-md-4">Password</label>
+      <div class="col-md-4">
+        <input type="text" name="registerObj.password" required minlength="16" [(ngModel)]="registerObj.password" #pw="ngModel" />
+      </div>
+    </div>
+    <p *ngIf="pw.invalid && pw.touched" class="red">Password must be at least 16 characters long</p>
+    <div class="form-group row">
+      <label class="col-md-4">Confirm Password</label>
+      <div class="col-md-4">
+        <input type="text" name="passwordConfirm" required ngMatch="pw" [(ngModel)]="passwordConfirm" #pwConfirm="ngModel" />
+      </div> 
+    </div>
+    <p *ngIf="!match && pwConfirm.touched" class="red">Must match the password field</p>
+    <input [disabled]="!registerForm.form.valid" class="submitBtn" type="submit" value="Register" />
+  </form>
+</div>
+

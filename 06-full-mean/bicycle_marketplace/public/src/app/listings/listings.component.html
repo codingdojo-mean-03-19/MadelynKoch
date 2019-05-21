@@ -1,0 +1,42 @@
+<div>
+  <a [routerLink]="['/browse']">Browse</a>
+  <a class="bold">My Listings</a>
+  <a (click)="onLogOff()">Log Off</a>
+</div>
+
+<div>
+  <h2>Create Listing</h2>
+  <div>
+    <form (submit)="addNewListing()">
+      <div>
+          <label>Upload Image</label>
+          <input type="text" name="img_url" require [(ngModel)]="listing.img_url">
+          <ng-container *ngIf="listing.img_url !== ''">
+              <img src={{listing.img_url}} alt="image" />
+          </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="inputTitle">Title</label>
+        <input type="text" class="inputTitle" name="title" require #title="ngModel" [(ngModel)]="listing.title" />
+      </div>
+      <div class="form-group">
+        <label for="inputPrice">Price</label>
+        <input type="text" class="inputPrice" name="price" require #price="ngModel" [(ngModel)]="listing.price" />
+      </div>
+      <div class="form-group">
+        <label for="inputdescription">Description</label>
+        <input type="text" class="inputDescription" name="description" require #description="ngModel" [(ngModel)]="listing.desc" />
+      </div>
+      <div class="form-group">
+        <label for="inputlocation">Location</label>
+        <input type="text" class="inputLocation" name="location" require #location="ngModel" [(ngModel)]="listing.location" />
+      </div>
+      <input type="submit" value="Create" />
+    </form>
+  </div>
+</div>
+
+<h2>Edit/Delete Listing</h2>
+<div *ngFor="let listing of listings">
+  <app-edit [refresh]="refreshPage" [listing]="listing"></app-edit>
+</div>
